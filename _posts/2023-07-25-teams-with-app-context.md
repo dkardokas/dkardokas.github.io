@@ -10,7 +10,7 @@ tags: [PnP Core, SharePoint, Code]
 
 When running code in an app-only context (which is common for provisioning tools), creating a Team site (with associated M365 Group) is not necessarily a straight forward task. 
 
-In My example I'm using [PnP Core](https://github.com/pnp/pnpcore), but the same ideas/issues apply with vanilla CSOM or using other tools.
+In this example we're using [PnP Core](https://github.com/pnp/pnpcore), but the same ideas/issues apply with vanilla CSOM or using other tools.
 Creating a non-Teams site can be done using [`SiteCollectionManager`](https://pnp.github.io/pnpcore/api/PnP.Core.Admin.Model.SharePoint.ISiteCollectionManager.html)
 ```cs
 {
@@ -24,7 +24,7 @@ Creating a non-Teams site can be done using [`SiteCollectionManager`](https://pn
     var siteCtx = siteColMan.CreateSiteCollection(siteOpts)
 }
 ```
-However when we try to pass in a `TeamSiteOptions` object instead, it gives us a nasty error message 
+However when we try to pass in a `TeamSiteOptions` object instead, it gives a nasty error message 
 > REST API Exception occurred
 
 The [`ITeamManager`](https://pnp.github.io/pnpcore/api/PnP.Core.Admin.Model.Teams.ITeamManager.html) class looks promising, however we run into the same problem (albeit with a more descriptive error)
@@ -34,7 +34,7 @@ The [`ITeamManager`](https://pnp.github.io/pnpcore/api/PnP.Core.Admin.Model.Team
 ## Graph API to the rescue
 
 There may be several ways to get around this, but they would all include similar ideas.
-Rule #1: use Graph API - forget SharePoint context completely, it isn't going to work. Even though PnP Core is supposed to use Graph API (as I'm setting `GraphFirst = true` option), it seems to fall back to SharePoint operations in these specific cases. Instead, I construct a Graph client explicitly
+Rule #1: use Graph API - forget SharePoint context completely, it isn't going to work. Even though PnP Core is supposed to use Graph API (with the `GraphFirst = true` option), it seems to fall back to SharePoint operations in these specific cases. Instead, we construct a Graph client explicitly
 
 ```cs
 {
@@ -95,5 +95,5 @@ Although the code isn't very elegant, it gives a good level of control over the 
 
 ## One More Thing..
 
-For Graph API request to work, make sure you have granted correct permissions to your app - specifically `Team.Create` in this case
+For Graph API request to work, make sure you have granted correct permissions to your app - specifically `Team.Create`
 ![permissions](/assets/img/Screenshot 2023-08-01 182755.png)
