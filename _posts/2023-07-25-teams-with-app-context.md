@@ -1,7 +1,7 @@
 ---
 title: Provisioning Teams with app-only context
 author: dkardokas
-date: 2023-07-31 07:55:00 +0100
+date: 2023-07-25 07:55:00 +0100
 categories: [SharePoint, MS Teams]
 tags: [PnP Core, SharePoint, Code]
 ---
