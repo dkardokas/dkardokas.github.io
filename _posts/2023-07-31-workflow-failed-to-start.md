@@ -2,7 +2,7 @@
 title: Connection not configured for this service
 author: dkardokas
 date: 2023-07-31 07:55:00 +0100
-categories: [Dataverse, Bugfix]
+categories: [Dataverse, Power Apps]
 tags: [Power Platform, Dataverse, Dynamics]
 pin: true
 ---
